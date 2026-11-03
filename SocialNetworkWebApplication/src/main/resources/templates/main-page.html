@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/common.css">
+    <title>Main page</title>
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="header-container">
+            <div class="header__text">
+                <h2>All Posts</h2>
+            </div>
+        </div>
+        <div th:with="isPostsEmpty=${posts == null or posts.isEmpty()}" class="records-container">
+            <div th:if="${isPostsEmpty}" class="hint">
+                <span>There are no posts!</span>
+            </div>
+            <div th:if="${!isPostsEmpty}" th:each="post: ${posts}" class="record">
+                <div class="record__title">
+                    <a th:text="${post.title}" th:href="@{/posts/{postId}(postId=${post.id})}"></a>
+                </div>
+                <div class="record__controls">
+                    <form th:action="@{/posts/{postId}/delete(postId=${post.id})}" method="post" class="record__controls-form">
+                        <button type="submit" class="button_type_close">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M12.071 13.485l-2.828 2.829-1.415-1.415 2.829-2.828-2.829-2.828 1.415-1.415 2.828 2.829L14.9 7.828l.707.708.707.707-2.829 2.828 2.829 2.829-1.415 1.414-2.828-2.829z" fill="#000"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="header-container">
+            <div class="header__text">
+                <h2>Create post</h2>
+            </div>
+        </div>
+        <div class="form-container">
+            <form action="/posts/create" method="post" class="form-container__form">
+                <div class="form-container__input-wrapper">
+                    <input type="text" name="author" class="form-container__input" placeholder="Enter author" required>
+                </div>
+                <div class="form-container__input-wrapper">
+                    <input type="text" name="title" class="form-container__input" placeholder="Enter title" required>
+                </div>
+                <div class="form-container__button-wrapper">
+                    <button type="submit" class="form-container__button">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
