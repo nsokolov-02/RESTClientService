@@ -16,10 +16,10 @@ SocialNetworkWebApplication  ──HTTP/JSON──▶  PostsRestService
 
 ## Технологии
 
-- Java [версия, например 17]
-- [Spring Boot / другой фреймворк — укажите, что используете]
-- [Maven / Gradle]
-- [База данных, если есть: H2 / PostgreSQL / ...]
+- Java [25]
+- [Spring Boot]
+- [Maven]
+- [База данных: PostgreSQL / Hibernate]
 
 ## Запуск
 
@@ -27,8 +27,8 @@ SocialNetworkWebApplication  ──HTTP/JSON──▶  PostsRestService
    ```
    git clone https://github.com/nsokolov-02/RESTClientService.git
    ```
-2. Запустите сервис `PostsRestService` (по умолчанию [порт, например 8080]).
-3. Запустите `SocialNetworkWebApplication` (по умолчанию [порт, например 8081]).
+2. Запустите сервис `PostsRestService` (по умолчанию порт 9090).
+3. Запустите `SocialNetworkWebApplication` (по умолчанию порт 9091).
 4. Откройте в браузере `http://localhost:[порт]`.
 
 ## API сервиса
